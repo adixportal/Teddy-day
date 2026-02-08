@@ -5,16 +5,16 @@
 <title>Teddy Day 🧸</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
   min-height:100vh;
-  background:linear-gradient(135deg,#fde7ef,#f6d1da);
+  background:linear-gradient(135deg,#fdeff4,#f8cdda);
   font-family:'Nunito',sans-serif;
-  color:#5b2b3a;
+  color:#4a2230;
   overflow:hidden;
 }
 
@@ -22,13 +22,12 @@ body{
 .screen{
   display:none;
   min-height:100vh;
-  padding:80px 24px;
+  padding:90px 24px;
   text-align:center;
-  animation:softIn 1s ease;
+  animation:fadeIn 1s ease;
 }
 .screen.active{display:block}
-
-@keyframes softIn{
+@keyframes fadeIn{
   from{opacity:0;transform:translateY(25px)}
   to{opacity:1;transform:translateY(0)}
 }
@@ -37,10 +36,10 @@ body{
 .card{
   max-width:420px;
   margin:0 auto;
-  padding:46px 28px;
-  background:rgba(255,255,255,.85);
-  border-radius:28px;
-  box-shadow:0 25px 50px rgba(0,0,0,.15);
+  padding:50px 30px;
+  background:rgba(255,255,255,.9);
+  border-radius:32px;
+  box-shadow:0 30px 60px rgba(0,0,0,.18);
 }
 
 /* text */
@@ -50,57 +49,59 @@ h1{
   margin-bottom:14px;
 }
 p{
-  font-size:15px;
+  font-size:16px;
   line-height:1.9;
   opacity:.9;
 }
 
 /* button */
 .btn{
-  margin-top:32px;
-  padding:14px 44px;
+  margin-top:34px;
+  padding:14px 48px;
   border-radius:40px;
   border:none;
-  background:linear-gradient(135deg,#ff9fb6,#ff6f91);
-  color:white;
-  font-size:15px;
+  background:linear-gradient(135deg,#ff7aa2,#ff4d79);
+  color:#fff;
+  font-size:16px;
   cursor:pointer;
-  box-shadow:0 15px 30px rgba(255,111,145,.45);
+  box-shadow:0 18px 35px rgba(255,77,121,.45);
   transition:.3s;
 }
 .btn:hover{transform:translateY(-3px)}
 
-/* teddy select */
-.teddy-wrap{
+/* hug options */
+.hugs{
   display:flex;
   justify-content:center;
   gap:18px;
-  margin-top:26px;
+  margin-top:30px;
 }
-.teddy{
-  width:90px;height:110px;
-  border-radius:20px;
-  background:linear-gradient(135deg,#ffe1ea,#ffd1dc);
+.hug{
+  width:92px;
+  height:120px;
+  border-radius:24px;
+  background:linear-gradient(135deg,#ffe3ec,#ffd1dc);
   display:flex;
   align-items:center;
   justify-content:center;
-  font-size:38px;
+  font-size:36px;
   cursor:pointer;
-  box-shadow:0 14px 30px rgba(0,0,0,.18);
-  transition:.3s;
+  box-shadow:0 18px 35px rgba(0,0,0,.18);
+  transition:.35s;
 }
-.teddy:hover{
-  transform:translateY(-6px) scale(1.05);
+.hug:hover{
+  transform:translateY(-8px) scale(1.06);
 }
 
-/* hug animation */
-.hug{
+/* floating hugs */
+.float{
   position:absolute;
+  bottom:-20px;
   font-size:22px;
-  animation:hugUp 2.5s ease forwards;
+  animation:floatUp 3s ease forwards;
 }
-@keyframes hugUp{
-  to{transform:translateY(-120px);opacity:0}
+@keyframes floatUp{
+  to{transform:translateY(-140px);opacity:0}
 }
 
 /* final note */
@@ -109,7 +110,7 @@ p{
   line-height:2;
 }
 .signature{
-  margin-top:24px;
+  margin-top:28px;
   font-family:'Playfair Display',serif;
   font-size:22px;
 }
@@ -119,92 +120,118 @@ p{
 <body>
 
 <!-- SCREEN 1 -->
-<div class="screen active" id="t1">
+<div class="screen active" id="p1">
   <div class="card">
     <h1>Happy Teddy Day 🧸</h1>
     <p>
       Darling,<br>
-      teddy sirf toy nahi hota,<br>
-      wo ek feeling hoti hai 🤍
+      teddy sirf ek soft toy nahi hota,<br>
+      woh ek ehsaas hota hai — comfort ka 🤍
     </p>
-
-    <button class="btn" onclick="go(1)">Give a Hug</button>
+    <button class="btn" onclick="next(1)">Send You a Hug</button>
   </div>
 </div>
 
 <!-- SCREEN 2 -->
-<div class="screen" id="t2">
+<div class="screen" id="p2">
   <div class="card">
-    <h1>Pick Your Hug 🫶</h1>
+    <h1>Choose a Hug 🫶</h1>
     <p>
-      Mood ke hisaab se hug choose karo.
+      Har hug ka matlab alag hota hai.<br>
+      Jo tumhe chahiye, woh choose karo.
     </p>
 
-    <div class="teddy-wrap">
-      <div class="teddy" onclick="choose('Soft hug 🤍')">🧸</div>
-      <div class="teddy" onclick="choose('Warm hug 💗')">🧸</div>
-      <div class="teddy" onclick="choose('Tight hug ❤️')">🧸</div>
+    <div class="hugs">
+      <div class="hug" onclick="selectHug(1)">🧸</div>
+      <div class="hug" onclick="selectHug(2)">🧸</div>
+      <div class="hug" onclick="selectHug(3)">🧸</div>
     </div>
   </div>
 </div>
 
 <!-- SCREEN 3 -->
-<div class="screen" id="t3">
+<div class="screen" id="p3">
   <div class="card">
-    <h1 id="hugText">A Hug For You</h1>
-    <p>
-      Jab bhi low feel ho,<br>
-      bas yaad karna —<br>
-      koi hai jo tumhe tightly hug karta hai.
-    </p>
-
-    <button class="btn" onclick="go(3)">Read Note</button>
+    <h1 id="hugTitle">A Hug Just For You</h1>
+    <p id="hugText"></p>
+    <button class="btn" onclick="next(3)">Read Final Note</button>
   </div>
 </div>
 
 <!-- SCREEN 4 -->
-<div class="screen" id="t4">
+<div class="screen" id="p4">
   <div class="card">
     <h1>Always With You 🤍</h1>
 
     <p class="note">
-      Ye teddy bas ek symbol hai.<br><br>
+      Ye teddy sirf ek cheez nahi hai,<br>
+      ye ek reminder hai.<br><br>
 
-      Asal hug wo hai<br>
-      jo bina mile bhi mehsoos ho jaaye.<br><br>
+      Ki jab bhi tum thak jao,<br>
+      ya duniya thodi zyada lagne lage,<br>
+      koi hai jo tumhe bina kahe samajh leta hai.<br><br>
 
-      Jab bhi thoda akela lage,<br>
-      is Teddy Day ko yaad kar lena 🧸
+      Happy Teddy Day, Darling 🧸
     </p>
 
     <div class="signature">
-      — Your safe place
+      — Your comfort place
     </div>
   </div>
 </div>
 
 <script>
-function go(n){
-  document.getElementById("t"+n).classList.remove("active");
-  document.getElementById("t"+(n+1)).classList.add("active");
+function next(n){
+  document.getElementById("p"+n).classList.remove("active");
+  document.getElementById("p"+(n+1)).classList.add("active");
 }
 
-function choose(text){
-  document.getElementById("t2").classList.remove("active");
-  document.getElementById("t3").classList.add("active");
-  document.getElementById("hugText").innerText=text;
-  hugBurst();
+function selectHug(type){
+  document.getElementById("p2").classList.remove("active");
+  document.getElementById("p3").classList.add("active");
+
+  const title = document.getElementById("hugTitle");
+  const text = document.getElementById("hugText");
+
+  if(type===1){
+    title.innerText = "Soft Hug 🤍";
+    text.innerHTML = `
+      Ye hug un palon ke liye hai<br>
+      jab tumhe bas shanti chahiye.<br><br>
+      Koi sawal nahi,<br>
+      koi pressure nahi,<br>
+      bas calm aur comfort.`;
+  }
+  if(type===2){
+    title.innerText = "Warm Hug 💗";
+    text.innerHTML = `
+      Ye hug tab ke liye hai<br>
+      jab tum thodi down feel karo.<br><br>
+      Jaise koi bole —<br>
+      “sab theek ho jaayega,<br>
+      main hoon na.”`;
+  }
+  if(type===3){
+    title.innerText = "Tight Hug ❤️";
+    text.innerHTML = `
+      Ye hug un dinon ke liye hai<br>
+      jab duniya zyada bhaari lage.<br><br>
+      Strong, protective,<br>
+      aur bina chhode huye.<br>
+      Bilkul waise jaise tum deserve karti ho.`;
+  }
+
+  floatHugs();
 }
 
-function hugBurst(){
-  for(let i=0;i<8;i++){
-    const h=document.createElement("div");
-    h.className="hug";
-    h.innerText="🫶";
-    h.style.left=(40+Math.random()*20)+"%";
-    h.style.bottom="40%";
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),2500);
+function floatHugs(){
+  for(let i=0;i<7;i++){
+    const f=document.createElement("div");
+    f.className="float";
+    f.innerText="🫶";
+    f.style.left=(40+Math.random()*30)+"%";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),3000);
   }
 }
 </script>
