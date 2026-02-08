@@ -36,8 +36,8 @@ body{
 .card{
   max-width:420px;
   margin:0 auto;
-  padding:50px 30px;
-  background:rgba(255,255,255,.9);
+  padding:48px 30px;
+  background:rgba(255,255,255,.92);
   border-radius:32px;
   box-shadow:0 30px 60px rgba(0,0,0,.18);
 }
@@ -52,6 +52,15 @@ p{
   font-size:16px;
   line-height:1.9;
   opacity:.9;
+}
+
+/* gif */
+.gif{
+  width:100%;
+  max-width:240px;
+  margin:18px auto;
+  border-radius:20px;
+  box-shadow:0 18px 40px rgba(0,0,0,.25);
 }
 
 /* button */
@@ -69,16 +78,15 @@ p{
 }
 .btn:hover{transform:translateY(-3px)}
 
-/* hug options */
+/* hugs */
 .hugs{
   display:flex;
   justify-content:center;
   gap:18px;
-  margin-top:30px;
+  margin-top:22px;
 }
 .hug{
-  width:92px;
-  height:120px;
+  width:92px;height:120px;
   border-radius:24px;
   background:linear-gradient(135deg,#ffe3ec,#ffd1dc);
   display:flex;
@@ -104,7 +112,7 @@ p{
   to{transform:translateY(-140px);opacity:0}
 }
 
-/* final note */
+/* note */
 .note{
   font-size:16px;
   line-height:2;
@@ -119,26 +127,35 @@ p{
 
 <body>
 
-<!-- SCREEN 1 -->
+<!-- PAGE 1 -->
 <div class="screen active" id="p1">
   <div class="card">
     <h1>Happy Teddy Day 🧸</h1>
+
+    <!-- FIRST PAGE GIF -->
+    <img class="gif" src="https://i.ibb.co/Z0BNJFt/81575c3f180610b335c88ec00268510a.gif" alt="Teddy Day">
+
     <p>
       Darling,<br>
-      teddy sirf ek soft toy nahi hota,<br>
-      woh ek ehsaas hota hai — comfort ka 🤍
+      teddy sirf toy nahi hota,<br>
+      wo ek feeling hoti hai 🤍
     </p>
+
     <button class="btn" onclick="next(1)">Send You a Hug</button>
   </div>
 </div>
 
-<!-- SCREEN 2 -->
+<!-- PAGE 2 -->
 <div class="screen" id="p2">
   <div class="card">
     <h1>Choose a Hug 🫶</h1>
+
+    <!-- HUG SECTION GIF -->
+    <img class="gif" src="https://i.ibb.co/67wfjm4r/2d4138c7c24d21b9d17f66a54ee7ea03.gif" alt="Hugs">
+
     <p>
       Har hug ka matlab alag hota hai.<br>
-      Jo tumhe chahiye, woh choose karo.
+      Jo tumhe chahiye, wahi choose karo.
     </p>
 
     <div class="hugs">
@@ -149,7 +166,7 @@ p{
   </div>
 </div>
 
-<!-- SCREEN 3 -->
+<!-- PAGE 3 -->
 <div class="screen" id="p3">
   <div class="card">
     <h1 id="hugTitle">A Hug Just For You</h1>
@@ -158,20 +175,22 @@ p{
   </div>
 </div>
 
-<!-- SCREEN 4 -->
+<!-- PAGE 4 -->
 <div class="screen" id="p4">
   <div class="card">
     <h1>Always With You 🤍</h1>
 
+    <!-- LAST PAGE GIF -->
+    <img class="gif" src="https://i.ibb.co/G3QVv872/54ef2ed0427606019a804dea787a78dc.gif" alt="Love">
+
     <p class="note">
-      Ye teddy sirf ek cheez nahi hai,<br>
-      ye ek reminder hai.<br><br>
+      Ye teddy sirf ek symbol hai.<br><br>
 
-      Ki jab bhi tum thak jao,<br>
-      ya duniya thodi zyada lagne lage,<br>
-      koi hai jo tumhe bina kahe samajh leta hai.<br><br>
+      Asal hug wo hota hai<br>
+      jo bina mile bhi mehsoos ho jaaye.<br><br>
 
-      Happy Teddy Day, Darling 🧸
+      Jab bhi thoda low feel ho,<br>
+      bas yaad kar lena — koi hai jo tumhara hai 🧸
     </p>
 
     <div class="signature">
@@ -190,35 +209,20 @@ function selectHug(type){
   document.getElementById("p2").classList.remove("active");
   document.getElementById("p3").classList.add("active");
 
-  const title = document.getElementById("hugTitle");
-  const text = document.getElementById("hugText");
+  const title=document.getElementById("hugTitle");
+  const text=document.getElementById("hugText");
 
   if(type===1){
-    title.innerText = "Soft Hug 🤍";
-    text.innerHTML = `
-      Ye hug un palon ke liye hai<br>
-      jab tumhe bas shanti chahiye.<br><br>
-      Koi sawal nahi,<br>
-      koi pressure nahi,<br>
-      bas calm aur comfort.`;
+    title.innerText="Soft Hug 🤍";
+    text.innerHTML=`Ye hug tab ke liye hai jab bas shanti chahiye.<br><br>Koi baat nahi, koi sawaal nahi — sirf comfort.`;
   }
   if(type===2){
-    title.innerText = "Warm Hug 💗";
-    text.innerHTML = `
-      Ye hug tab ke liye hai<br>
-      jab tum thodi down feel karo.<br><br>
-      Jaise koi bole —<br>
-      “sab theek ho jaayega,<br>
-      main hoon na.”`;
+    title.innerText="Warm Hug 💗";
+    text.innerHTML=`Ye hug un palon ke liye hai jab tum thodi kamzor feel karti ho.<br><br>Jaise koi bole — sab theek ho jaayega.`;
   }
   if(type===3){
-    title.innerText = "Tight Hug ❤️";
-    text.innerHTML = `
-      Ye hug un dinon ke liye hai<br>
-      jab duniya zyada bhaari lage.<br><br>
-      Strong, protective,<br>
-      aur bina chhode huye.<br>
-      Bilkul waise jaise tum deserve karti ho.`;
+    title.innerText="Tight Hug ❤️";
+    text.innerHTML=`Ye hug un dinon ke liye hai jab duniya thodi zyada ho jaaye.<br><br>Strong, safe aur bina chhode huye.`;
   }
 
   floatHugs();
