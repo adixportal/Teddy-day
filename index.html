@@ -5,46 +5,31 @@
 <title>Teddy Day 🧸</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
   min-height:100vh;
-  background:radial-gradient(circle at top,#3a1a1a,#140707);
-  font-family:'Montserrat',sans-serif;
-  color:#f4e9e2;
+  background:linear-gradient(135deg,#fde7ef,#f6d1da);
+  font-family:'Nunito',sans-serif;
+  color:#5b2b3a;
   overflow:hidden;
 }
-
-/* progress */
-.progress{
-  position:fixed;
-  top:18px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:10px;
-}
-.dot{
-  width:10px;height:10px;
-  border-radius:50%;
-  background:rgba(255,255,255,.3);
-}
-.dot.active{background:#e0b3b3}
 
 /* screens */
 .screen{
   display:none;
   min-height:100vh;
-  padding:70px 26px;
+  padding:80px 24px;
   text-align:center;
-  animation:fadeSlide 1s ease;
+  animation:softIn 1s ease;
 }
 .screen.active{display:block}
-@keyframes fadeSlide{
-  from{opacity:0;transform:translateY(40px)}
+
+@keyframes softIn{
+  from{opacity:0;transform:translateY(25px)}
   to{opacity:1;transform:translateY(0)}
 }
 
@@ -53,65 +38,69 @@ body{
   max-width:420px;
   margin:0 auto;
   padding:46px 28px;
-  background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,200,200,.25);
-  border-radius:30px;
-  backdrop-filter:blur(16px);
-  box-shadow:0 35px 70px rgba(0,0,0,.6);
+  background:rgba(255,255,255,.85);
+  border-radius:28px;
+  box-shadow:0 25px 50px rgba(0,0,0,.15);
 }
 
 /* text */
 h1{
   font-family:'Playfair Display',serif;
-  font-size:40px;
-  margin-bottom:12px;
+  font-size:38px;
+  margin-bottom:14px;
 }
 p{
   font-size:15px;
   line-height:1.9;
-  opacity:.92;
+  opacity:.9;
 }
 
-.divider{
-  width:90px;height:2px;
-  margin:26px auto;
-  background:linear-gradient(to right,transparent,#e0b3b3,transparent);
-}
-
-/* buttons */
+/* button */
 .btn{
-  margin-top:30px;
-  padding:14px 46px;
-  border-radius:50px;
-  border:1px solid rgba(255,200,200,.35);
-  background:rgba(255,255,255,.14);
-  color:#f5e4da;
+  margin-top:32px;
+  padding:14px 44px;
+  border-radius:40px;
+  border:none;
+  background:linear-gradient(135deg,#ff9fb6,#ff6f91);
+  color:white;
   font-size:15px;
   cursor:pointer;
-  letter-spacing:.4px;
-  box-shadow:0 20px 45px rgba(0,0,0,.45);
-  transition:.35s;
+  box-shadow:0 15px 30px rgba(255,111,145,.45);
+  transition:.3s;
 }
 .btn:hover{transform:translateY(-3px)}
 
-/* teddies */
-.teddies{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
-  margin-top:22px;
+/* teddy select */
+.teddy-wrap{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin-top:26px;
 }
 .teddy{
-  padding:22px 8px;
-  border-radius:22px;
-  background:linear-gradient(145deg,#5a2a2a,#2a1212);
-  font-size:30px;
+  width:90px;height:110px;
+  border-radius:20px;
+  background:linear-gradient(135deg,#ffe1ea,#ffd1dc);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:38px;
   cursor:pointer;
-  transition:.35s;
+  box-shadow:0 14px 30px rgba(0,0,0,.18);
+  transition:.3s;
 }
 .teddy:hover{
   transform:translateY(-6px) scale(1.05);
-  box-shadow:0 18px 40px rgba(0,0,0,.6);
+}
+
+/* hug animation */
+.hug{
+  position:absolute;
+  font-size:22px;
+  animation:hugUp 2.5s ease forwards;
+}
+@keyframes hugUp{
+  to{transform:translateY(-120px);opacity:0}
 }
 
 /* final note */
@@ -120,143 +109,104 @@ p{
   line-height:2;
 }
 .signature{
-  margin-top:26px;
+  margin-top:24px;
   font-family:'Playfair Display',serif;
-  font-size:24px;
-}
-
-/* floating hearts */
-.heart{
-  position:absolute;
-  bottom:-20px;
-  font-size:14px;
-  opacity:.4;
-  animation:floatUp 7s linear infinite;
-}
-@keyframes floatUp{
-  to{transform:translateY(-120vh);opacity:0}
+  font-size:22px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="progress">
-  <div class="dot active"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-  <div class="dot"></div>
-</div>
-
-<!-- PAGE 1 -->
-<div class="screen active" id="s1">
+<!-- SCREEN 1 -->
+<div class="screen active" id="t1">
   <div class="card">
     <h1>Happy Teddy Day 🧸</h1>
-
     <p>
       Darling,<br>
-      kuch cheezein bol nahi paate,<br>
-      par feel kara deti hain.
+      teddy sirf toy nahi hota,<br>
+      wo ek feeling hoti hai 🤍
     </p>
 
-    <div class="divider"></div>
-
-    <p>
-      Teddy bhi waisi hi cheez hai,<br>
-      silent, warm aur comforting 🤍
-    </p>
-
-    <button class="btn" onclick="next(1)">Continue</button>
+    <button class="btn" onclick="go(1)">Give a Hug</button>
   </div>
 </div>
 
-<!-- PAGE 2 -->
-<div class="screen" id="s2">
+<!-- SCREEN 2 -->
+<div class="screen" id="t2">
   <div class="card">
-    <h1>Choose Your Teddy 🧸</h1>
-
+    <h1>Pick Your Hug 🫶</h1>
     <p>
-      Size important nahi hota,<br>
-      feeling hoti hai.
+      Mood ke hisaab se hug choose karo.
     </p>
 
-    <div class="teddies">
-      <div class="teddy" onclick="selectTeddy('Small teddy, cute like you 🤍')">🧸</div>
-      <div class="teddy" onclick="selectTeddy('Medium teddy, perfect hug 🤎')">🧸</div>
-      <div class="teddy" onclick="selectTeddy('Big teddy, big warmth ❤️')">🧸</div>
+    <div class="teddy-wrap">
+      <div class="teddy" onclick="choose('Soft hug 🤍')">🧸</div>
+      <div class="teddy" onclick="choose('Warm hug 💗')">🧸</div>
+      <div class="teddy" onclick="choose('Tight hug ❤️')">🧸</div>
     </div>
   </div>
 </div>
 
-<!-- PAGE 3 -->
-<div class="screen" id="s3">
+<!-- SCREEN 3 -->
+<div class="screen" id="t3">
   <div class="card">
-    <h1 id="teddyText">Just One Thought</h1>
-
+    <h1 id="hugText">A Hug For You</h1>
     <p>
-      Jab bhi thoda lonely lage,<br>
-      bas imagine karna,<br>
-      main wahin hoon.
+      Jab bhi low feel ho,<br>
+      bas yaad karna —<br>
+      koi hai jo tumhe tightly hug karta hai.
     </p>
 
-    <div class="divider"></div>
-
-    <p>
-      A teddy hug can never replace a real one,<br>
-      but intention wahi hota hai.
-    </p>
-
-    <button class="btn" onclick="next(3)">Last Page</button>
+    <button class="btn" onclick="go(3)">Read Note</button>
   </div>
 </div>
 
-<!-- PAGE 4 -->
-<div class="screen" id="s4">
+<!-- SCREEN 4 -->
+<div class="screen" id="t4">
   <div class="card">
-    <h1>For You 🤍</h1>
+    <h1>Always With You 🤍</h1>
 
     <p class="note">
-      Jab bhi duniya thodi heavy lage,<br>
-      is Teddy ko yaad karna.<br><br>
+      Ye teddy bas ek symbol hai.<br><br>
 
-      Ye sirf toy nahi,<br>
-      ek silent reminder hai,<br>
-      ki koi hai jo tumhara khayal rakhta hai.<br><br>
+      Asal hug wo hai<br>
+      jo bina mile bhi mehsoos ho jaaye.<br><br>
 
-      Happy Teddy Day, Darling 🧸
+      Jab bhi thoda akela lage,<br>
+      is Teddy Day ko yaad kar lena 🧸
     </p>
 
     <div class="signature">
-      — Always here
+      — Your safe place
     </div>
   </div>
 </div>
 
 <script>
-function updateDots(n){
-  document.querySelectorAll('.dot').forEach((d,i)=>{
-    d.classList.toggle('active', i===n);
-  });
+function go(n){
+  document.getElementById("t"+n).classList.remove("active");
+  document.getElementById("t"+(n+1)).classList.add("active");
 }
-function next(n){
-  document.getElementById("s"+n).classList.remove("active");
-  document.getElementById("s"+(n+1)).classList.add("active");
-  updateDots(n);
+
+function choose(text){
+  document.getElementById("t2").classList.remove("active");
+  document.getElementById("t3").classList.add("active");
+  document.getElementById("hugText").innerText=text;
+  hugBurst();
 }
-function selectTeddy(text){
-  document.getElementById("s2").classList.remove("active");
-  document.getElementById("s3").classList.add("active");
-  document.getElementById("teddyText").innerText=text;
-  updateDots(2);
+
+function hugBurst(){
+  for(let i=0;i<8;i++){
+    const h=document.createElement("div");
+    h.className="hug";
+    h.innerText="🫶";
+    h.style.left=(40+Math.random()*20)+"%";
+    h.style.bottom="40%";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),2500);
+  }
 }
-setInterval(()=>{
-  const h=document.createElement("div");
-  h.className="heart";
-  h.innerText="🤍";
-  h.style.left=Math.random()*100+"vw";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),8000);
-},700);
 </script>
 
 </body>
